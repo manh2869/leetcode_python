@@ -6,18 +6,17 @@ class Listnode:
 
 def deleteDuplicates(head):
     temp = head
-
-    while temp.next != None:
-        temp1 = temp
-        while temp1.val == temp1.next.val:
-            temp1 = temp1.next
-        temp.next = temp1.next
-        temp = temp.next
-
+    if temp == None:
+        return head
+    while temp.next != None and temp.next != None:
+        if temp.val == temp.next.val:
+            temp.next = temp.next.next
+        else:
+            temp = temp.next
     return head
 
 
-a = Listnode(16)
+a = Listnode(12)
 b = Listnode(16)
 c = Listnode(16)
 d = Listnode(16)
