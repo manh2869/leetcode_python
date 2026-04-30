@@ -5,17 +5,19 @@ class tree:
         self.right = right
 
 
-def DFS(root):
-    if root == None:
-        return
-    stack = [root]
-    while stack :
-        node = stack.pop()
-        print(node.val)
-        if node.left:
-            stack.append(node.left)
-        if node.right:
-            stack.append(node.right)
+def isSymmetric(root):
+    def check(p, q):
+        if p == None and q == None:
+            return True
+        if p == None and q != None:
+            return False
+        if p != None and q == None:
+            return False
+        if p.val != q.val:
+            return False
+        return check(p.left, q.right) and check(p.right, q.left)
+
+    return check(root.left, root.right)
 
 
 a = tree(1)
@@ -25,4 +27,4 @@ a.left.right = tree(4)
 a.right = tree(2)
 a.right.left = tree(4)
 a.right.right = tree(3)
-DFS(a)
+print(isSymmetric(a))
